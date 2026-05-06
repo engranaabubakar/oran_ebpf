@@ -134,37 +134,6 @@ python3 tools/parse_ping.py --input results/latency_baseline_ping.log --mode bas
 python3 tools/parse_ping.py --input results/latency_tcbpf_ping.log --mode tc_bpf --output results/latency_tcbpf_metrics.csv
 ```
 
-### Build summary tables
-```bash
-python3 tools/make_tables.py --results-dir results
-```
-
-### Build publication-ready plots
-```bash
-python3 tools/make_plots.py --results-dir results --out-dir figures
-```
-
-## Table Templates
-### Table 1: Functional validation
-| Interface | Hook | Protocol | GTP-U packets | GTP-U bytes | active TEIDs | malformed packets |
-|---|---|---|---:|---:|---:|---:|
-
-### Table 2: Baseline vs TC-BPF overhead
-| Mode | Throughput Gb/s | CPU avg % | softirq avg % | packet drops | retransmissions |
-|---|---:|---:|---:|---:|---:|
-
-### Table 3: Latency impact
-| Mode | avg RTT | P50 | P95 | P99 | P99.9 | max | packet loss |
-|---|---:|---:|---:|---:|---:|---:|---:|
-
-### Table 4: Per-TEID telemetry
-| TEID | packets | bytes | average packet size | direction |
-|---:|---:|---:|---:|---|
-
-### Table 5: tcpdump vs TC-BPF comparison
-| Method | always-on suitability | per-TEID support | CPU overhead | packet processing path | limitations |
-|---|---|---|---|---|---|
-
 ## Troubleshooting
 - `gtpu_packets_total=0` with high traffic:
   - verify traffic is truly UE user-plane (`udp/2152`) not only host `iperf3`.
