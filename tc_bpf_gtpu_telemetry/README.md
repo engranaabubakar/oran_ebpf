@@ -119,21 +119,6 @@ PING_IFACE=oaitun_ue1 PING_TARGET=12.1.1.1 ./scripts/run_latency_test.sh
 DURATION=60 ./scripts/run_cpu_overhead_test.sh
 ```
 
-## Parse Results and Generate Tables/Figures
-### Parse iperf and CPU logs
-```bash
-python3 tools/parse_iperf.py --input results/baseline_iperf.json --mode baseline --output results/baseline_iperf_metrics.csv
-python3 tools/parse_iperf.py --input results/tcbpf_iperf.json --mode tc_bpf --output results/tcbpf_iperf_metrics.csv
-python3 tools/parse_mpstat.py --input results/baseline_cpu.log --mode baseline --output results/baseline_cpu_metrics.csv
-python3 tools/parse_mpstat.py --input results/tcbpf_cpu.log --mode tc_bpf --output results/tcbpf_cpu_metrics.csv
-```
-
-### Parse ping latency logs
-```bash
-python3 tools/parse_ping.py --input results/latency_baseline_ping.log --mode baseline --output results/latency_baseline_metrics.csv
-python3 tools/parse_ping.py --input results/latency_tcbpf_ping.log --mode tc_bpf --output results/latency_tcbpf_metrics.csv
-```
-
 ## Troubleshooting
 - `gtpu_packets_total=0` with high traffic:
   - verify traffic is truly UE user-plane (`udp/2152`) not only host `iperf3`.
